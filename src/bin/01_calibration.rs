@@ -98,6 +98,7 @@ fn main() {
 
     let mut watch = HashSet::new();
     let mut freq = 0;
+    let mut count: u64 = 0;
     let twice = 'outer: loop {
         for c in &changes {
             if watch.contains(&freq) {
@@ -105,9 +106,11 @@ fn main() {
             }
             watch.insert(freq);
             freq += c;
+            count += 1;
         }
     };
     println!(":: Answer 2 is {}", twice);
+    println!("   Took {} iterations", count);
 }
 
 const PUZZLE: &'static str = "Chronal Calibration";
